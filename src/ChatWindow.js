@@ -2,17 +2,22 @@ import React,{ Component } from 'react';
 import MessageHistory from './MessageHistory'
 import CreateMessage from './CreateMessage'
 
-export default class ChatWindow extends Component{
+class ChatWindow extends Component{ 
+    onMessage = (message) => {
+    	this.props.createMessage(this.props.user.username,message);
+    };
 
-  render(){
+    render(){
   	return(
           <div className="chat-window">
             <h2>Super Awesome Chat</h2>
             <div className="name sender">{this.props.user.username}</div>
 
             <MessageHistory user={this.props.user} messages={this.props.messages}/>  
-			<CreateMessage />
+			<CreateMessage onCreateMessage={this.onMessage}/>
           </div>
     )
-  }
+	}
 }
+
+export default ChatWindow;

@@ -13,16 +13,18 @@ const users = [{ username: 'Amy' }, { username: 'John' }];
 
 class App extends Component {
   state={
-    messages:[
-      {username:'',
-       text:''}
-    ]
+    messages:[ ]
   }
   /*
   If the user did not type anything, he/she should not be
   allowed to submit.
   */
- 
+ handleCreateMessage= (username,text) => {
+ 	this.setState({
+    	messages:this.state.messages.concat({username:username,text:text})
+    })
+ }
+
   render() {
     return (
       <div className="App">
@@ -34,7 +36,7 @@ class App extends Component {
     
         <div className="container">
     	{users.map(user=>(
-          <ChatWindow user={user} messages={this.state.messages}/>
+          <ChatWindow user={user} messages={this.state.messages} onMessage={this.handleCreateMessage}/>
         ))}
 		</div>
     	   	
