@@ -16,6 +16,7 @@ class CreateMessage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.onCreateMessage(this.state.text);
+    this.setState({text:''});
   }
 
 render(){
