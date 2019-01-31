@@ -4,7 +4,7 @@ import CreateMessage from './CreateMessage'
 
 class ChatWindow extends Component{ 
     onMessage = (message) => {
-    	this.props.createMessage(this.props.user.username,message);
+    	this.props.onMessage(this.props.user.username,message);
     };
 
     render(){
